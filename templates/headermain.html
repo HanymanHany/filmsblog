@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head> <meta charset="utf-8">
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="viewport"  content="initial-scale=1.0, width=device-width">       
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="title" content ="Блог о фильмах и сериалах. Обзоры, новости, рейтинги.">
+<meta name="description" content="Сайт об HTML и создании сайтов"> 
+<meta name="keywords" content="HTML, META, метатег, тег, поисковая система"> 
+<title>Блог о фильмах и сериалах. Обзоры, новости, рейтинги.</title>
+   <link rel="icon" type="image/png" href="../assets/img/favicon.ico" sizes="16x16">
+   <link href="/assets/css/style.css" rel="stylesheet">
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121617070-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-121617070-1');
+</script>
+
+</head>
+
+<body>
+
+     <div class="container">
+             {{if .IsAuthorized}}
+             <a class="nev" href="/write">Новый пост</a>
+              {{end}}
+             <div class="logo">
+                 <a href="/"><img src="../assets/img/logo.jpg" alt="FilmsBlog" /></a>
+             </div>
+         <a class="toggleMenu" href="#">Меню</a>
+         <form method="POST" action="/simplesearch" id="search" >
+             <input type="text" placeholder="название фильма" id="simplesearch" name="simplesearch" maxlength="64" class="input1"/>
+             <input type="submit" value="Найти" class="input1"/>
+         </form>
+         <ul class="nav meg">
+             <li ><a href="/">Главная</a></li>
+             <li><a href="/news">Новости</a></li>
+             <li><a href="/contacts">Контакты</a></li>
+            
+         </ul>
+         
+         <ul class="nav">
+                 <li>
+                     <form method="POST" action="/review" >
+                     <input type="submit" name="new" id="newposts" value="Новинки 2018" class="inputt" />
+                     </form>
+                 </li>
+                 <li>
+                     <form method="POST" action="/review" >
+                     <input type="submit" name="all" id="allposts" value="Все обзоры" class="inputt" />
+                     </form>
+                 </li>
+                 <li > 
+                     <form method="POST" action="/search" >
+                     <input type="submit" value="Расширенный поиск" class="input2"/>
+                     </form>
+                 </li>	
+                 
+             </ul>
+
+             
+         </div>
+

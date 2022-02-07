@@ -1,0 +1,109 @@
+﻿   <!DOCTYPE html>
+   <html lang="ru">
+   <head> <meta charset="utf-8">
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="viewport"  content="initial-scale=1.0, width=device-width">
+       
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <link rel="icon" type="image/png" href="../assets/img/favicon.ico" sizes="16x16">
+   <link href="/assets/css/style.css" rel="stylesheet">
+!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121617070-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121617070-1');
+</script>
+
+   </head>
+   
+   <body>
+  
+        <div class="container">
+                {{if .IsAuthorized}}
+                <a class="nev" href="/write">Новый пост</a>
+                 {{end}}
+                <div class="logo">
+                    <a href="/"><img src="../assets/img/logo.jpg" alt="FilmsBlog" /></a>
+                </div>
+            <a class="toggleMenu" href="#">Меню</a>
+            <form method="POST" action="/simplesearch" id="search" >
+                <input type="text" placeholder="название фильма" id="simplesearch" name="simplesearch" maxlength="64" class="input1"/>
+                <input type="submit" value="Найти" class="input1"/>
+            </form>
+            <ul class="nav meg">
+                <li ><a href="/">Главная</a></li>
+                <li><a href="/news">Новости</a></li>
+                <li><a href="/contacts">Контакты</a></li>
+               
+            </ul>
+            
+            <ul class="nav">
+                    <li>
+                        <form method="POST" action="/review" >
+                        <input type="submit" name="new" id="newposts" value="Новинки 2018" class="inputt" />
+                        </form>
+                    </li>
+                    <li>
+                        <form method="POST" action="/review" >
+                        <input type="submit" name="all" id="allposts" value="Все обзоры" class="inputt" />
+                        </form>
+                    </li>
+                    <li > 
+                        <form method="POST" action="/search" >
+                        <input type="submit" value="Расширенный поиск" class="input2"/>
+                        </form>
+                    </li>	
+                    
+                </ul>
+
+                
+            </div>
+
+
+{{ yield }}
+   <a  id="up" href="#" class="ontop" title="наверх" style="opacity: 1;display: none; bottom: 1%;">^</a>
+
+   {{if .IsAuthorized}}
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ru/stat/?id=47935805&amp;from=informer"
+target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/47935805/3_1_FFFFECFF_FFE6CCFF_0_pageviews"
+style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" /></a>
+<!-- /Yandex.Metrika informer -->
+{{end}}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter47935805 = new Ya.Metrika({
+                    id:47935805,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/47935805" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<script  src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+       <script src="/assets/js/menu.js"></script>
+       <script src="/assets/js/jquery-2.1.0.min.js"></script>
+       <script src="/assets/js/upbutton.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+   <head> <meta charset="utf-8">
+   <meta name="format-detection" content="telephone=no" />
+   <meta name="viewport"  content="initial-scale=1.0, width=device-width">       
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="title" content ="Блог о фильмах и сериалах. Обзоры, новости, рейтинги.">
+<meta name="description" content="Блог о фильмах собрал в себе большое количество обзоров, как на новинки 2018 года, так и на классику кинематографа."> 
+<meta name="keywords" content="Блог, фильмы, блог о фильмах, блог про фильм, обзор на фильм, что посмортеть, новинки 2018"> 
+<title>Блог о фильмах и сериалах. Обзоры, новости, рейтинги.</title>
+
+   <link rel="icon" type="image/png" href="../assets/img/favicon.ico" sizes="16x16">
+   <link href="/assets/css/style.css" rel="stylesheet">
+   <meta name="yandex-verification" content="d90923dcaf9f3c85">
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121617070-1"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-121617070-1');
+</script>
+
+</head>
+
+<body>
+
+     <div class="container">
+             {{if .IsAuthorized}}
+             <a class="nev" href="/write">Новый пост</a>
+              {{end}}
+             <div class="logo">
+                 <a href="/"><img src="../assets/img/logo.jpg" alt="FilmsBlog" title="FilmsBlog"/></a>
+             </div>
+         <a class="toggleMenu" href="#">Меню</a>
+         <form method="POST" action="/simplesearch" id="search" >
+             <input type="text" placeholder="название фильма" id="simplesearch" name="simplesearch" maxlength="64" class="input1"/>
+             <input type="submit" value="Найти" class="input1"/>
+         </form>
+         <ul class="nav meg">
+             <li ><a href="/">Главная</a></li>
+             <li><a href="/news">Новости</a></li>
+             <li><a href="/contacts">Контакты</a></li>
+            
+         </ul>
+         
+         <ul class="nav">
+                 <li>
+                     <form method="POST" action="/review" >
+                     <input type="submit" name="new" id="newposts" value="Новинки 2018" class="inputt" />
+                     </form>
+                 </li>
+                 <li>
+                     <form method="POST" action="/review" >
+                     <input type="submit" name="all" id="allposts" value="Все обзоры" class="inputt" />
+                     </form>
+                 </li>
+                 <li > 
+                     <form method="POST" action="/search" >
+                     <input type="submit" value="Расширенный поиск" class="input2"/>
+                     </form>
+                 </li>	
+                 
+             </ul>
+
+             
+         </div>
+
+
+<div class="wraper">
+    {{ range $value := .Posts }}
+    <div class="new">
+
+    {{if $.IsAuthorized}}
+        <a href="/edit/{{$value.Idfilms}}">
+            <div class="head">
+            <span class="new_title_big">{{$value.Title}}</span><br>
+             <span class="new_title_small">{{ $value.TitleEng }}</span>
+             </div>
+        </a>
+    {{else}}
+<a  href="/view/{{$value.Idfilms}}">
+    <div class="head">
+<span class="new_title_big">{{$value.Title}}</span><br>
+<span class="new_title_small">{{ $value.TitleEng }}</span>
+</div>
+</a>
+{{end}} 
+
+
+     <div class="new_image"><img alt="{{$value.Title}}" title="{{$value.Title}}" src="../assets/img/{{ $value.Image }}"></div>
+    <div class="info_films">
+      <div class="info">
+        
+          <table>
+              <tr class="namestableup">
+               <td>Год:</td>
+               <td>{{ $value.Year }}</td>
+              </tr>
+              <tr class="namestable">
+               <td >Жанр:</td>
+               <td>{{ $value.Genre }}</td>
+             </tr>
+             <tr class="namestable">
+                <td >Режиссер:</td>
+                <td>{{ $value.Directors }}</td>
+              </tr>
+              <tr class="namestable">
+                  <td>Актеры:</td>
+                  <td>{{ $value.Actors }}</td>
+                </tr>
+            </table>
+      
+    </div>
+    <div class="info_right">
+     <!--<div > Рейтинг </div>
+     <div >{{ $value.Rating }}/10</div>-->
+
+     <table >
+        <tr>
+         <td >Рейтинг</td>
+        </tr>
+        <tr>
+            <td >{{ $value.Rating }}/10</td>
+        </tr>
+     </table>
+
+    </div>
+</div>
+
+          <div class="new_body">
+              {{ $value.PreviewHtml | unescape }}
+                 <div class="adaptbats">
+              <a class="arrow-circle" data-text="Читать далее" href="/view/{{$value.Idfilms}}">Читать далее</a>
+             <!-- <time class="arrow-circle-date" datetime="2018-01-04T20:07:35+0000">{{ $value.Data }}</time>
+              <a class="arrow-circle" data-text="Инфо о фильме" href="/info/{{$value.Idfilms}}">Инфо о фильме</a>-->
+                </div>
+            </div>
+           
+          </div>
+          {{ end }}
+</div>
+{{ template "footer"}}

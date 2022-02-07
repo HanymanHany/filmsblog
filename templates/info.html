@@ -1,0 +1,61 @@
+
+<div class="wraper">
+        <div class="view">
+                <div class="new_body">
+                                <div class="adaptview">
+                                <a class="arrow-circle"  href="/">назад</a>
+                                <a class="arrow-circle"  href="/view/{{.Post.Id}}">читать обзор</a><br>
+                                </div>
+                               <h1 >{{ .Post.Title}}/{{ .Post.TitleEng}}</h1>
+        
+                  <table class="block1" > 
+                        <tbody >
+                                <tr>
+                                    <td>Год</td>
+                                    <td>{{ .Post.Year}}</td>
+                                </tr>
+                                <tr>
+                                     <td>Страна</td>
+                                     <td>{{ .Post.Country}}</td>
+                                </tr>
+                                <tr>
+                                     <td>Жанр</td>
+                                     <td>{{ .Post.Genre}}</td>
+                                </tr>
+                                <tr>
+                                        <td>Продолжительность</td>
+                                        <td>{{ .Post.Duration}}</td>
+                                </tr>
+                        </tbody>
+                        </table></br>
+                        <div class="line">
+                  <hr align="center" width="400" color="black"/>
+                  <hr align="center" width="250" color="black" />
+                  <hr align="center" width="100" color="black"  />
+                </div>   
+                           <h2>Участники процесса</h2>
+        
+        
+
+        {{ .Post.Img | unescape }}
+</br>
+<div class="line">
+        <hr align="center" width="400" color="black"/>
+        <hr align="center" width="250" color="black" />
+        <hr align="center" width="100" color="black"  />
+</div>     
+<div class="budgett">  
+        <h2>Бюджет</h2>
+        <a>&#36;{{ .Post.Budget}}</a>
+</div> 
+<div class="ratingg"> 
+        <h3 >Рейтинг</h3>
+        <a>{{ .Post.Rating}}</a>
+</div>              
+            
+                                        
+        
+                </div>
+              </div>
+          
+    </div>

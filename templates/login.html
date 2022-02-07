@@ -1,0 +1,19 @@
+{{ template "headermain"}}
+<div class="wrapper">
+
+					<div class="login">
+		<form role="form" method="POST" action="/login">
+			<div class="new_body">
+				<label>Логин</label>
+				<input type="text" id="username" name="username" class="input1" maxlength="20" />
+			</div>
+			<div class="new_body">
+				<label>Пароль</label>
+				<input type="password" id="password" name="password" class="input1" maxlength="20"/>
+			</div>
+			<button type="submit" class="button">Пробуем</button>
+		</form>
+	</div>
+</div>	
+
+{{ template "footer"}}
